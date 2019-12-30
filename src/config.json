@@ -1,0 +1,114 @@
+{
+  "name": "Route53",
+  "type": "executer",
+  "main": "app.js",
+  "execProgram": "node",
+  "exposeRoute": false,
+  "imgUrl": "logo.png",
+  "version": "1.0.0",
+  "settings" : [
+    {
+      "name": "AWS_ACCESS_KEY_ID",
+      "viewName": "Access key",
+      "type": "vault"
+    },
+    {
+      "name": "AWS_SECRET_ACCESS_KEY",
+      "viewName": "Secret key",
+      "type": "vault"
+    }
+  ],
+  "methods": [
+    {
+      "name": "createRecord",
+      "viewName": "Create Record",
+      "params": [
+        {
+          "name": "AWS_ACCESS_KEY_ID",
+          "viewName": "Access key",
+          "type": "vault"
+        },
+        {
+          "name": "AWS_SECRET_ACCESS_KEY",
+          "viewName": "Secret key",
+          "type": "vault"
+        },
+        {
+          "name": "hostedZoneId",
+          "viewName": "Hosted Zone ID",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "viewName": "Name",
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "viewName": "Record Type",
+          "type": "options",
+          "options": [
+            {
+              "id": "A",
+              "name": "A"
+            },
+            {
+              "id": "AAAA",
+              "name": "AAAA"
+            },
+            {
+              "id": "CAA",
+              "name": "CAA"
+            },
+            {
+              "id": "CNAME",
+              "name": "CNAME"
+            },
+            {
+              "id": "MX",
+              "name": "MX"
+            },
+            {
+              "id": "NAPTR",
+              "name": "NAPTR"
+            },
+            {
+              "id": "NS",
+              "name": "NS"
+            },
+            {
+              "id": "PTR",
+              "name": "PTR"
+            },
+            {
+              "id": "SOA",
+              "name": "SOA"
+            },
+            {
+              "id": "SPF",
+              "name": "SPF"
+            },
+            {
+              "id": "SRV",
+              "name": "SRV"
+            },
+            {
+              "id": "TXT",
+              "name": "TXT"
+            }
+          ]
+        },
+        {
+          "name": "value",
+          "viewName": "Value",
+          "type": "string"
+        },
+        {
+          "name": "comment",
+          "viewName": "Comment",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

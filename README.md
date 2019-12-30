@@ -1,2 +1,2 @@
 # kaholo-plugin-aws-route53
-Kaholo Plugin for AWS Rotue53
+AWS Rotue53 plugin for Kaholo
