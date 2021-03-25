@@ -1,6 +1,6 @@
 const aws = require("aws-sdk");
 
-function createRecord(action, settings) {
+async function createRecord(action, settings) {
   if (!action.params.name || !action.params.value ||
       !action.params.type || !action.params.hostedZoneId){
     throw "One or more fields are missing";
@@ -22,7 +22,7 @@ function createRecord(action, settings) {
   return changeRecordSetsSDK(action, settings, changes);
 }
 
-function changeResourceRecordSets(action, settings) {
+async function changeResourceRecordSets(action, settings) {
   if(!action.params.hostedZoneId || !action.params.changesArray){
     throw "Hosted zond ID and changes array required!";
   }

@@ -1,4 +1,4 @@
-# kaholo-plugin-aws-eks
+# kaholo-plugin-aws-rotue53
 AWS Rotue53 plugin for Kaholo
 
 ## Settings
