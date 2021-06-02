@@ -1,4 +1,5 @@
-const aws = require("aws-sdk");
+const { getRegions } = require("./autocomplete");
+const { changeRecordSetsSDK, getRoute53, getAwsCallback } = require("./helpers");
 
 async function createRecord(action, settings) {
   if (!action.params.name || !action.params.value ||
@@ -32,33 +33,38 @@ async function changeResourceRecordSets(action, settings) {
   return changeRecordSetsSDK(action, settings, action.params.changesArray);
 }
 
-// helpers
-
-async function changeRecordSetsSDK(action, settings, changes){
-    const params = {
-      ChangeBatch: {
-        Changes: action.params.changesArray,
-        Comment: action.params.comment,
-      },
-      HostedZoneId: action.params.hostedZoneId,
-    };
-    const client = getRoute53(action, settings);
-    return new Promise((resolve, reject) => {
-      client.changeResourceRecordSets(params, (err,result)=>{
-        if(err) return reject(err);
-        resolve(result);
-      });
-    });
-}
-
-function getRoute53(action, settings) {
-  return new aws.Route53({
-    accessKeyId: action.params.AWS_ACCESS_KEY_ID || settings.AWS_ACCESS_KEY_ID,
-    secretAccessKey: action.params.AWS_SECRET_ACCESS_KEY || settings.AWS_SECRET_ACCESS_KEY,
+async function createHostedZone(action, settings){
+  const params = {
+    Name: action.params.name,
+    CallerReference: String(Date.now()),
+    DelegationSetId: action.params.delegationSetId,
+    HostedZoneConfig: {
+      Comment: action.params.comment,
+      PrivateZone: action.params.private || false
+    }
+  }
+  if (!params.Name){
+    throw "Didn't provide domain name!";
+  }
+  if (action.params.private && action.params.vpcId && action.params.vpcRegion){
+    params.VPC = {
+      VPCId: action.params.vpcId,
+      VPCRegion: action.params.vpcRegion
+    }
+  }
+  else if (action.params.vpcId || action.params.vpcRegion){
+    throw "Must provide both VPC ID and VPC Region, and only in private zones"
+  }
+  const client = getRoute53(action, settings);
+  return new Promise((resolve, reject) => {
+    client.createHostedZone(params, getAwsCallback(resolve, reject));
   });
 }
 
 module.exports = {
-  createRecord: createRecord,
-  changeResourceRecordSets: changeResourceRecordSets,
+  createRecord,
+  changeResourceRecordSets,
+  createHostedZone,
+  // auto complete 
+  getRegions
 };
