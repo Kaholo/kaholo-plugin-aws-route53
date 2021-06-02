@@ -148,7 +148,7 @@
     },
     {
       "name": "createHostedZone",
-      "viewName": "createHostedZone",
+      "viewName": "Create Hosted Zone",
       "params": [
         {
           "name": "AWS_ACCESS_KEY_ID",
@@ -185,7 +185,7 @@
         {
           "name": "comment",
           "viewName": "Comment",
-          "type": "string"
+          "type": "text"
         },
         {
           "name": "delegationSetId",
