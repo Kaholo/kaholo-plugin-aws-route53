@@ -35,9 +35,8 @@ Creates a new public or private hosted zone. [documentation](https://docs.aws.am
 1. Access Key ID (Vault) **Optional**
 2. Secret Access key (Vault) **Optional**
 3. Domain Name (String) **Required** The name of the domain. Specify a fully qualified domain name, for example, www.example.com. The trailing dot is Optional. - The ID of the hosted zone that you want to change record sets in it.
-4. Changes Array(array) **Required** - An array of objects, each representing a change to do in the record set. You can see the possible and Required fields for this object in the [documentation](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Route53.html#changeResourceRecordSets-property) in the changes field inside the json request.
-5. Private (Boolean) **Optional** - A value that indicates whether this is a private hosted zone. Default is false.
-6. VPC Region (Autocomplete String) **Optional** - The region that an Amazon VPC was created in. **For private hosted zones only.**
-7. VPC ID (String) **Optional** - The ID of an Amazon VPC. **For private hosted zones only.**
-8. Comment (Text) **Optional** - Any comments that you want to include about the hosted zone.
-9. Delegation Set ID (String) **Optional** - If specified, associate the specified reusable delegation set with this hosted zone.
+4. Private (Boolean) **Optional** - A value that indicates whether this is a private hosted zone. Default is false.
+5. VPC Region (Autocomplete String) **Optional** - The region that an Amazon VPC was created in. **For private hosted zones only.**
+6. VPC ID (String) **Optional** - The ID of an Amazon VPC. **For private hosted zones only.**
+7. Comment (Text) **Optional** - Any comments that you want to include about the hosted zone.
+8. Delegation Set ID (String) **Optional** - If specified, associate the specified reusable delegation set with this hosted zone.
