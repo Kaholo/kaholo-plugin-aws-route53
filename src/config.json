@@ -5,8 +5,8 @@
   "execProgram": "node",
   "exposeRoute": false,
   "imgUrl": "logo.png",
-  "version": "1.3.0",
-  "settings" : [
+  "version": "1.3.2",
+  "settings": [
     {
       "name": "AWS_ACCESS_KEY_ID",
       "viewName": "Access key",
@@ -194,5 +194,6 @@
         }
       ]
     }
-  ]
+  ],
+  "category": "NETWORKING"
 }
