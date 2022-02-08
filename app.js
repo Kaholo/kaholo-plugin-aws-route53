@@ -1,5 +1,5 @@
-const { getRegions } = require("./autocomplete");
-const { changeRecordSetsSDK, getRoute53, getAwsCallback } = require("./helpers");
+const { listRegions } = require("./autocomplete");
+const { changeRecordSetsSDK, getRoute53, getAwsCallback, parseAutocomplete} = require("./helpers");
 
 async function createRecord(action, settings) {
   if (!action.params.name || !action.params.value ||
@@ -46,6 +46,7 @@ async function createHostedZone(action, settings){
   if (!params.Name){
     throw "Didn't provide domain name!";
   }
+  action.params.vpcRegion = parseAutocomplete(action.params.vpcRegion);
   if (action.params.private && action.params.vpcId && action.params.vpcRegion){
     params.VPC = {
       VPCId: action.params.vpcId,
@@ -65,6 +66,6 @@ module.exports = {
   createRecord,
   changeResourceRecordSets,
   createHostedZone,
-  // auto complete 
-  getRegions
+  // auto complete
+  listRegions
 };
