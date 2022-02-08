@@ -1,4 +1,4 @@
-const { getRegions } = require("./autocomplete");
+const { listRegions } = require("./autocomplete");
 const { changeRecordSetsSDK, getRoute53, getAwsCallback } = require("./helpers");
 
 async function createRecord(action, settings) {
@@ -65,6 +65,6 @@ module.exports = {
   createRecord,
   changeResourceRecordSets,
   createHostedZone,
-  // auto complete 
-  getRegions
+  // auto complete
+  listRegions
 };

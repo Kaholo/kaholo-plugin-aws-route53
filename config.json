@@ -175,7 +175,7 @@
           "viewName": "VPC Region",
           "type": "autocomplete",
           "autocompleteType": "function",
-          "functionName": "getRegions"
+          "functionName": "listRegions"
         },
         {
           "name": "vpcId",
