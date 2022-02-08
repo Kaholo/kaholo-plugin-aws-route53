@@ -55,5 +55,6 @@ module.exports = {
     getRoute53,
     getEc2,
     getLightsail,
+    parseAutocomplete,
     getAwsCallback
 };
